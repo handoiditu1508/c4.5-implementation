@@ -79,14 +79,20 @@ namespace C45
 
 			Console.WriteLine("Deciding");
 			int rightDecisions = 0;
+			int missingRows = 0;
 			foreach(var row in data)
 			{
+				if (row.Any(s => s == "?"))
+				{
+					missingRows++;
+					continue;
+				}
 				string decision = tree.Decide(row);
 				if (decision == row[row.Count - 1])
 					rightDecisions++;
-				Console.WriteLine($"[{decision}] | [{row[row.Count - 1]}]");
+				//Console.WriteLine($"[{decision}] | [{row[row.Count - 1]}]");
 			}
-			Console.WriteLine($"{rightDecisions}/{data.Count} right decisions");
+			Console.WriteLine($"{rightDecisions}/{data.Count - missingRows} right decisions");
 			Console.WriteLine("Decided");
 			Console.WriteLine("--------------------------");
 

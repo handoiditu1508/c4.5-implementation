@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Khai phá dữ liệu\\C4.5 implementation\\C45\\C45\\C45.csproj": {}
+    "E:\\My Stuffs\\Công việc ở trường\\Khai phá dữ liệu\\C4.5 implementation\\C45\\C45\\C45.csproj": {}
   },
   "projects": {
-    "D:\\Khai phá dữ liệu\\C4.5 implementation\\C45\\C45\\C45.csproj": {
+    "E:\\My Stuffs\\Công việc ở trường\\Khai phá dữ liệu\\C4.5 implementation\\C45\\C45\\C45.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Khai phá dữ liệu\\C4.5 implementation\\C45\\C45\\C45.csproj",
+        "projectUniqueName": "E:\\My Stuffs\\Công việc ở trường\\Khai phá dữ liệu\\C4.5 implementation\\C45\\C45\\C45.csproj",
         "projectName": "C45",
-        "projectPath": "D:\\Khai phá dữ liệu\\C4.5 implementation\\C45\\C45\\C45.csproj",
+        "projectPath": "E:\\My Stuffs\\Công việc ở trường\\Khai phá dữ liệu\\C4.5 implementation\\C45\\C45\\C45.csproj",
         "packagesPath": "C:\\Users\\hando\\.nuget\\packages\\",
-        "outputPath": "D:\\Khai phá dữ liệu\\C4.5 implementation\\C45\\C45\\obj\\",
+        "outputPath": "E:\\My Stuffs\\Công việc ở trường\\Khai phá dữ liệu\\C4.5 implementation\\C45\\C45\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "E:\\Microsoft\\Xamarin\\NuGet\\",

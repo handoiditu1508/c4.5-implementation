@@ -12,7 +12,7 @@ namespace C45
 		static void Main(string[] args)
 		{
 			string filePath = @"..\..\..\data\";
-			string fileName = "tic_tac_toe.csv";
+			string fileName = "kr_vs_kp.csv";
 			IList<IList<string>> data = new List<IList<string>>();
 			IList<Column> columns = new List<Column>();
 			IList<string> columnNames = null;
@@ -64,13 +64,6 @@ namespace C45
 			}
 			Console.WriteLine("Data Processed");
 			Console.WriteLine("--------------------------");
-
-			foreach (Column col in columns)
-			{
-				foreach (var val in col.Values)
-					Console.Write(val + ",");
-				Console.WriteLine("");
-			}
 
 			Console.WriteLine("Creating Tree");
 			Node tree = TreeCreator.CreateTree(data, columns);

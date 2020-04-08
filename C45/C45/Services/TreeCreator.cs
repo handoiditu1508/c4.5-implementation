@@ -77,6 +77,7 @@ namespace C45.Services
 						var col = copiedColumns[i];
 						var values = filteredDataFrom_nc.GroupBy(row => row[col.Index]).Select(c => c.Key).ToList();
 						values.Remove("?");
+						values.OrderBy(v => v);
 						if (values.Count > 1 || i == copiedColumns.Count - 1)
 						{
 							Column newCol = col.Clone();
@@ -99,6 +100,7 @@ namespace C45.Services
 						var col = copiedColumns[i];
 						var values = filteredDataFrom_nc.GroupBy(row => row[col.Index]).Select(c => c.Key).ToList();
 						values.Remove("?");
+						values.OrderBy(v => v);
 						if (values.Count > 1 || i == copiedColumns.Count - 1)
 						{
 							Column newCol = col.Clone();

@@ -10,16 +10,6 @@ namespace C45.Services
 	{
 		public static Node CreateTree(IList<IList<string>> data, IList<Column> columns)
 		{
-			//sort values if column’s type is continuous
-			foreach (Column col in columns)
-			{
-				if(!col.IsNominal)
-				{
-					col.Values.OrderBy(v => v);
-				}
-			}
-
-			//deep first search
 			Stack<NodeCreator> stack = new Stack<NodeCreator>();
 
 			Node tree = new Node();
@@ -77,7 +67,6 @@ namespace C45.Services
 						var col = copiedColumns[i];
 						var values = filteredDataFrom_nc.GroupBy(row => row[col.Index]).Select(c => c.Key).ToList();
 						values.Remove("?");
-						values.OrderBy(v => v);
 						if (values.Count > 1 || i == copiedColumns.Count - 1)
 						{
 							Column newCol = col.Clone();
@@ -100,7 +89,6 @@ namespace C45.Services
 						var col = copiedColumns[i];
 						var values = filteredDataFrom_nc.GroupBy(row => row[col.Index]).Select(c => c.Key).ToList();
 						values.Remove("?");
-						values.OrderBy(v => v);
 						if (values.Count > 1 || i == copiedColumns.Count - 1)
 						{
 							Column newCol = col.Clone();

@@ -97,7 +97,8 @@ namespace C45.Services
 			int dataLength = 0;
 			foreach (IList<string> row in Data)
 			{
-				decisionRates[row[DecisionColumn.Index]]++;
+				if(row[DecisionColumn.Index] != "?")
+					decisionRates[row[DecisionColumn.Index]]++;
 				dataLength++;
 			}
 
@@ -129,7 +130,8 @@ namespace C45.Services
 				int dataLength = 0;
 				foreach (IList<string> row in Data)
 				{
-					columnRates[row[Column.Index]]++;
+					if(row[Column.Index] != "?")
+						columnRates[row[Column.Index]]++;
 					dataLength++;
 				}
 
@@ -179,9 +181,12 @@ namespace C45.Services
 				int dataLength = 0;
 				foreach (IList<string> row in Data)
 				{
-					if(double.Parse(row[Column.Index]) > parsedThreshold)
-						columnRates[true.ToString()]++;
-					else columnRates[false.ToString()]++;
+					if (row[Column.Index] != "?")
+					{
+						if (double.Parse(row[Column.Index]) > parsedThreshold)
+							columnRates[true.ToString()]++;
+						else columnRates[false.ToString()]++;
+					}
 
 					dataLength++;
 				}
@@ -207,11 +212,13 @@ namespace C45.Services
 				foreach (IList<string> row in Data)
 				{
 					if (double.Parse(row[Column.Index]) > parsedThreshold){
-						gt_dRates[row[DecisionColumn.Index]]++;
+						if(row[DecisionColumn.Index] != "?")
+							gt_dRates[row[DecisionColumn.Index]]++;
 						gt_dataLength++;
 					}
 					else{
-						loet_dRates[row[DecisionColumn.Index]]++;
+						if (row[DecisionColumn.Index] != "?")
+							loet_dRates[row[DecisionColumn.Index]]++;
 						loet_dataLength++;
 					}
 				}

@@ -55,6 +55,7 @@ namespace C45.Services
 				}
 				else
 				{
+					col.Values = col.Values.OrderBy(v => v).ToList();
 					for (int i = 0; i < col.Values.Count - 1; i++)
 					{
 						double th = double.Parse(col.Values[i]);

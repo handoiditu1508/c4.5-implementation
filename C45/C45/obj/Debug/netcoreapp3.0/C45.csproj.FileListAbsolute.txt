@@ -20,3 +20,4 @@ E:\My Stuffs\Công việc ở trường\Khai phá dữ liệu\C4.5 implementatio
 E:\My Stuffs\Công việc ở trường\Khai phá dữ liệu\C4.5 implementation\C45\C45\obj\Debug\netcoreapp3.0\C45.AssemblyInfo.cs
 E:\My Stuffs\Công việc ở trường\Khai phá dữ liệu\C4.5 implementation\C45\C45\obj\Debug\netcoreapp3.0\C45.dll
 E:\My Stuffs\Công việc ở trường\Khai phá dữ liệu\C4.5 implementation\C45\C45\obj\Debug\netcoreapp3.0\C45.pdb
+E:\My Stuffs\Công việc ở trường\Khai phá dữ liệu\C4.5 implementation\C45\C45\obj\Debug\netcoreapp3.0\C45.genruntimeconfig.cache

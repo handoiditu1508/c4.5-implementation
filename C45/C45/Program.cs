@@ -12,7 +12,7 @@ namespace C45
 		static void Main(string[] args)
 		{
 			string filePath = @"..\..\..\data\";
-			string fileName = "kr_vs_kp.csv";
+			string fileName = "house-votes-84.csv";
 			IList<IList<string>> data = new List<IList<string>>();
 			IList<Column> columns = new List<Column>();
 			IList<string> columnNames = null;

@@ -72,7 +72,7 @@ namespace C45.Services
 				if (newColumn != Column)
 					recalculate = true;
 			}
-			else if(newThreshold != null){
+			if(newThreshold != null){
 				if (newThreshold != Threshold)
 					recalculate = true;
 			}

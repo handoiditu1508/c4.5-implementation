@@ -21,12 +21,12 @@ namespace C45.Services
 			this.Data = data;
 			this.Columns = columns;
 			this.node = node;
-			formulas = new FormulasHelper(data, columns[columns.Count - 1]);
+			formulas = new FormulasHelper(data, columns.Last());
 		}
 
 		private ColumnWrapper getBranchingColumn()
 		{
-			if (formulas.GetEntropy() == 0)
+			if (Columns.Last().Values.Count < 2)//formulas.GetEntropy() == 0
 				return new ColumnWrapper(null);
 
 			double gainRatio = double.MinValue;
@@ -105,7 +105,7 @@ namespace C45.Services
 			else
 			{
 				IDictionary<string, int> count = new Dictionary<string, int>();
-				Column decisionColumn = Columns[Columns.Count - 1];
+				Column decisionColumn = Columns.Last();
 				foreach (string val in decisionColumn.Values)
 				{
 					count.Add(val, 0);

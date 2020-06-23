@@ -14,7 +14,7 @@ namespace C45.Services
 		private FormulasHelper formulas;
 
 		public NodeCreator(IList<IList<string>> data, IList<Column> columns) : this(data, columns, new Node())
-		{}
+		{ }
 
 		public NodeCreator(IList<IList<string>> data, IList<Column> columns, Node node)
 		{
@@ -34,19 +34,19 @@ namespace C45.Services
 			Column result = null;
 
 			IList<Column> newCols = new List<Column>(Columns);
-			for(int j = 0; j<Columns.Count-1; j++)
+			for (int j = 0; j < Columns.Count - 1; j++)
 			{
 				//remove columns have 1 value
 				Column col = Columns[j];
-				if(col.Values.Count < 2)
+				if (col.Values.Count < 2)
 				{
 					newCols.Remove(col);
 				}
 				//calculate gain ratio
-				else if(col.IsNominal)
+				else if (col.IsNominal)
 				{
 					double gR = formulas.GetGainRatio(col);
-					if(gR > gainRatio)
+					if (gR > gainRatio)
 					{
 						gainRatio = gR;
 						threshold = null;
@@ -60,7 +60,7 @@ namespace C45.Services
 					{
 						double th = double.Parse(col.Values[i]);
 						double gR = formulas.GetGainRatio(col, col.Values[i]);
-						if(gR > gainRatio)
+						if (gR > gainRatio)
 						{
 							gainRatio = gR;
 							threshold = th;
@@ -84,22 +84,39 @@ namespace C45.Services
 			node.Column = cw.Column;
 			node.Threshold = cw.Threshold;
 
-			if(node.Column != null)
+			if (node.Column != null)
 			{
 				if (node.Column.IsNominal)
 				{
-					node.DecideFunc = row => node.Childs[row[node.Column.Index]].Decide(row);
+					IDictionary<string, int> count = new Dictionary<string, int>();
+					Column decisionColumn = Columns.Last();
+					foreach (string val in decisionColumn.Values)
+					{
+						count.Add(val, 0);
+					}
+
+					foreach (IList<string> row in Data)
+					{
+						count[row[decisionColumn.Index]]++;
+					}
+
+					string mostAppearResult = count.First().Key;
+
+					foreach (string val in decisionColumn.Values)
+					{
+						if (count[val] > count[mostAppearResult])
+							mostAppearResult = val;
+					}
+
+					node.DecideFunc = row => node.Childs.ContainsKey(row[node.Column.Index]) ?
+						node.Childs[row[node.Column.Index]].Decide(row) :
+						mostAppearResult;
 				}
 				else
 				{
-					node.DecideFunc = delegate (IList<string> row)
-					{
-						if (double.Parse(row[node.Column.Index]) > node.Threshold)
-						{
-							return node.Childs[true.ToString()].Decide(row);
-						}
-						else return node.Childs[false.ToString()].Decide(row);
-					};
+					node.DecideFunc = row => double.Parse(row[node.Column.Index]) > node.Threshold ?
+						node.Childs[true.ToString()].Decide(row) :
+						node.Childs[false.ToString()].Decide(row);
 				}
 			}
 			else
@@ -111,7 +128,7 @@ namespace C45.Services
 					count.Add(val, 0);
 				}
 
-				foreach(IList<string> row in Data)
+				foreach (IList<string> row in Data)
 				{
 					count[row[decisionColumn.Index]]++;
 				}
